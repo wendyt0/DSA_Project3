@@ -41,7 +41,8 @@ int main() {
             }
             file.close();
             // Test any index
-            // locations[562].printAll();
+            // QuickSort(locations, 0, locations.size()-1);
+            //locations[562].printAll();
             printMenu();
             cin >> command;
 

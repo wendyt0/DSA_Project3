@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <vector>
+using namespace std;
 
 class Location {
     std::string price;
@@ -14,7 +16,8 @@ class Location {
 public:
     Location(std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string g, std::string h);
     void printAll();
-
+    int QuickSortHelper(vector<Location> &v, int start, int end);
+    void QuickSort(vector<Location> &v, int start, int end);
 };
 
 Location::Location(std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string g, std::string h) {
@@ -37,6 +40,26 @@ void Location::printAll() {
     std::cout << "DTNM: " << distanceToNearestMetro << std::endl;
     std::cout << "Lat: " << latitude << std::endl;
     std::cout << "Long: " << longitude << std::endl;
-
 }
 
+//Quick Sort Function
+int QuickSortHelper(vector<int> &v, int start, int end) {
+    int pivot = end;
+    int j = start;
+    for(int i = start; i < end; i++) {
+        if(v[i] < v[pivot]) {
+            swap(v[i], v[j]);
+            j++;
+        }
+    }
+    swap(v[j], v[pivot]);
+    return j;
+}
+
+void QuickSort(vector<Location> &v, int start, int end) {
+    if(start < end) {
+        int p = QuickSortHelper(v, start, end);
+        QuickSort(v, start, p-1);
+        QuickSort(v, p+1, end);
+    }
+}
