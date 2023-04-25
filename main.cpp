@@ -9,33 +9,30 @@ using namespace std;
 void printMenu();
 
 int main() {
-    std::string location;
-    std::string week;
+    string location;
+    string week;
     int command;
 
-    std::cout << "Welcome to BnBeyond!" << std::endl;
-    std::cout << "Where are you traveling to?" << std::endl;
-    
-
-    std::cin >> location;
+    cout << "Welcome to BnBeyond!" << endl;
+    cout << "Where are you traveling to? ";
+    cin >> location;
     if(location == "amsterdam" || location == "athens" || location == "barcelona" || location == "berlin" || location == "budapest"
     || location == "lisbon" || location == "london" || location == "paris" || location == "rome" || location == "vienna") {
-        std::cout << "Do you plan on staying during a weekend or a weekday?" << std::endl;
+        cout << "Do you plan on staying during a weekend or a weekday? ";
         cin >> week;
          if(week == "weekend" || week == "weekday") {
-            std::ifstream file;
-            
+            ifstream file;
             file.open("dataset/" + location + "_" + week + "s.csv");
-            std::string line;
+            string line;
             // The first line states what each index is for (price, distance, etc.)
-            std::getline(file, line);
-            std::vector<Location> locations;
-            while(std::getline(file, line)) {
-                std::stringstream s(line);
-                std::vector<std::string> tempVec;
+            getline(file, line);
+            vector<Location> locations;
+            while(getline(file, line)) {
+                stringstream s(line);
+                vector<std::string> tempVec;
                 while(s.good()) {
-                    std::string temp;
-                    std::getline(s, temp, ',');
+                    string temp;
+                    getline(s, temp, ',');
                     tempVec.push_back(temp);
                 }
                 Location temp(tempVec[1], tempVec[10], tempVec[11], tempVec[9], tempVec[12], tempVec[13], tempVec[19], tempVec[18]);
@@ -44,8 +41,25 @@ int main() {
             }
             file.close();
             // Test any index
-            locations[562].printAll();
+            // locations[562].printAll();
             printMenu();
+            cin >> command;
+
+            if(command == 1) {
+                cout << "a" << endl;
+            }
+            else if(command == 2) {
+                cout << "b" << endl;
+            }
+            else if(command == 3) {
+                cout << "c" << endl;
+            }
+            else if(command == 4) {
+                cout << "d" << endl;
+            }
+            else if(command == 5) {
+                cout << "e" << endl;
+            }
          }
          else {
             cout << "Invalid entry, please try again.";
@@ -54,7 +68,6 @@ int main() {
     else {
         cout << "Sorry, we do not support that location at this time.";
     }
-    
     return 0;
 }
 
@@ -67,5 +80,5 @@ void printMenu() {
     cout << "4. Sort by distance to city center" << endl;
     cout << "5. Sort by distance to nearest metro" << endl;
     cout << "6. Exit" << endl;
-    cout << "Please enter a command: " << endl;
+    cout << "Please enter a command: ";
 }
