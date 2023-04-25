@@ -44,7 +44,7 @@ int main() {
             }
             file.close();
             // Test any index
-            //locations[562].printAll();
+            locations[562].printAll();
             printMenu();
          }
          else {
