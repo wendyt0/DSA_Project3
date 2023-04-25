@@ -12,6 +12,7 @@ int main() {
     string location;
     string week;
     int command;
+    string sort;
 
     cout << "Welcome to BnBeyond!" << endl;
     cout << "Where are you traveling to? ";
@@ -41,25 +42,41 @@ int main() {
             }
             file.close();
             // Test any index
-            // QuickSort(locations, 0, locations.size()-1);
-            //locations[562].printAll();
+//            locations[562].printAll();
             printMenu();
             cin >> command;
 
-            if(command == 1) {
-                cout << "a" << endl;
+            cout << "Would you like to perform a quick sort or a merge sort? ";
+            cin >> sort;
+            if(sort == "quick") {
+                QuickSort(locations, 0, locations.size()-1, command);
+                if(command == 0) {
+                    cout << "Sorting by price, the 5 cheapest airbnb are as follows: " << endl;
+                }
+                else if(command == 1) {
+                    cout << "Sorting by rating, the 5 highest rated airbnb are as follows: " << endl;
+                }
+                else if(command == 2) {
+                    cout << "Sorting by capacity, the 5 airbnb with greatest guest satisfaction overall are as follows: " << endl;
+                }
+                else if(command == 3) {
+                    cout << "Sorting by cleanliness, the 5 airbnb rated most clean are as follows: " << endl;
+                }
+                else if(command == 4) {
+                    cout << "Sorting by distance to city center, the 5 airbnb closet to the center are as follows: " << endl;
+                }
+                else if(command == 5) {
+                    cout << "Sorting by distance to nearest metro, the 5 airbnb closet to a metro are as follows: " << endl;
+                }
+                for(int i = 0; i < 5; i++) {
+                    locations[i].printAll();
+                }
             }
-            else if(command == 2) {
-                cout << "b" << endl;
+            else if(sort == "merge") {
+                // call merge sort function here
             }
-            else if(command == 3) {
-                cout << "c" << endl;
-            }
-            else if(command == 4) {
-                cout << "d" << endl;
-            }
-            else if(command == 5) {
-                cout << "e" << endl;
+            else {
+                cout << "Invalid entry, please try again.";
             }
          }
          else {

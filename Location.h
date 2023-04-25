@@ -16,8 +16,16 @@ class Location {
 public:
     Location(std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string g, std::string h);
     void printAll();
-    int QuickSortHelper(vector<Location> &v, int start, int end);
-    void QuickSort(vector<Location> &v, int start, int end);
+    int QuickSortHelper(vector<Location> &v, int start, int end, int command);
+    void QuickSort(vector<Location> &v, int start, int end, int command);
+    string getPrice();
+    string getRating();
+    string getCapacity();
+    string getCleanliness();
+    string getDTC();
+    string getDTNM();
+    string getLat();
+    string getLong();
 };
 
 Location::Location(std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string g, std::string h) {
@@ -40,26 +48,121 @@ void Location::printAll() {
     std::cout << "DTNM: " << distanceToNearestMetro << std::endl;
     std::cout << "Lat: " << latitude << std::endl;
     std::cout << "Long: " << longitude << std::endl;
+    cout << endl;
+}
+
+string Location::getPrice() {
+    return price;
+}
+
+string Location::getRating() {
+    return rating;
+}
+
+string Location::getCapacity() {
+    return capacity;
+}
+
+string Location::getCleanliness() {
+    return cleanliness;
+}
+
+string Location::getDTC() {
+    return distanceToCenter;
+}
+
+string Location::getDTNM() {
+    return distanceToNearestMetro;
+}
+
+string Location::getLat() {
+    return latitude;
+}
+
+string Location::getLong() {
+    return longitude;
 }
 
 //Quick Sort Function
-int QuickSortHelper(vector<int> &v, int start, int end) {
-    int pivot = end;
-    int j = start;
-    for(int i = start; i < end; i++) {
-        if(v[i] < v[pivot]) {
-            swap(v[i], v[j]);
-            j++;
+int QuickSortHelper(vector<Location> &v, int start, int end, int command) {
+    if(command == 0) {
+        int pivot = end;
+        int j = start;
+        for (int i = start; i < end; i++) {
+            if (stof(v[i].getPrice()) < stof(v[pivot].getPrice())) {
+                swap(v[i], v[j]);
+                j++;
+            }
         }
+        swap(v[j], v[pivot]);
+        return j;
     }
-    swap(v[j], v[pivot]);
-    return j;
+    else if(command == 1) {
+        int pivot = end;
+        int j = start;
+        for (int i = start; i < end; i++) {
+            if (stof(v[i].getRating()) > stof(v[pivot].getRating())) {
+                swap(v[i], v[j]);
+                j++;
+            }
+        }
+        swap(v[j], v[pivot]);
+        return j;
+    }
+    else if(command == 2) {
+        int pivot = end;
+        int j = start;
+        for (int i = start; i < end; i++) {
+            if (stof(v[i].getCapacity()) > stof(v[pivot].getCapacity())) {
+                swap(v[i], v[j]);
+                j++;
+            }
+        }
+        swap(v[j], v[pivot]);
+        return j;
+    }
+    else if(command == 3) {
+        int pivot = end;
+        int j = start;
+        for (int i = start; i < end; i++) {
+            if (stof(v[i].getCleanliness()) > stof(v[pivot].getCleanliness())) {
+                swap(v[i], v[j]);
+                j++;
+            }
+        }
+        swap(v[j], v[pivot]);
+        return j;
+    }
+    else if(command == 4) {
+        int pivot = end;
+        int j = start;
+        for (int i = start; i < end; i++) {
+            if (stof(v[i].getDTC()) < stof(v[pivot].getDTC())) {
+                swap(v[i], v[j]);
+                j++;
+            }
+        }
+        swap(v[j], v[pivot]);
+        return j;
+    }
+    else if(command == 5) {
+        int pivot = end;
+        int j = start;
+        for (int i = start; i < end; i++) {
+            if (stof(v[i].getDTNM()) < stof(v[pivot].getDTNM())) {
+                swap(v[i], v[j]);
+                j++;
+            }
+        }
+        swap(v[j], v[pivot]);
+        return j;
+    }
 }
 
-void QuickSort(vector<Location> &v, int start, int end) {
-    if(start < end) {
-        int p = QuickSortHelper(v, start, end);
-        QuickSort(v, start, p-1);
-        QuickSort(v, p+1, end);
+void QuickSort(vector<Location> &v, int start, int end, int command) {
+    if (start < end) {
+        float p = QuickSortHelper(v, start, end, command);
+        QuickSort(v, start, p - 1, command);
+        QuickSort(v, p + 1, end, command);
     }
 }
