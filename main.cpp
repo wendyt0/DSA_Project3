@@ -43,7 +43,8 @@ int main() {
                 tempVec.clear();
             }
             file.close();
-            locations[562].printAll();
+            // Test any index
+            //locations[562].printAll();
             printMenu();
          }
          else {
