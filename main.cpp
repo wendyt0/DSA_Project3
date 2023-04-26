@@ -73,7 +73,28 @@ int main() {
                 }
             }
             else if(sort == "merge") {
-                // call merge sort function here
+                if(command == 0) {
+                    mergeSort(locations, 0, locations.size() - 1, command);
+                    cout << "Sorting by price, the 5 cheapest airbnb are as follows: " << endl;
+                }
+                else if(command == 1) {
+                    cout << "Sorting by rating, the 5 highest rated airbnb are as follows: " << endl;
+                }
+                else if(command == 2) {
+                    cout << "Sorting by capacity, the 5 airbnb with greatest guest satisfaction overall are as follows: " << endl;
+                }
+                else if(command == 3) {
+                    cout << "Sorting by cleanliness, the 5 airbnb rated most clean are as follows: " << endl;
+                }
+                else if(command == 4) {
+                    cout << "Sorting by distance to city center, the 5 airbnb closet to the center are as follows: " << endl;
+                }
+                else if(command == 5) {
+                    cout << "Sorting by distance to nearest metro, the 5 airbnb closet to a metro are as follows: " << endl;
+                }
+                for(int i = 0; i < 5; i++) {
+                    locations[i].printAll();
+                }
             }
             else {
                 cout << "Invalid entry, please try again.";

@@ -26,6 +26,7 @@ public:
     string getDTNM();
     string getLat();
     string getLong();
+    string getInfo(int command);
 };
 
 Location::Location(std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string g, std::string h) {
@@ -81,6 +82,22 @@ string Location::getLat() {
 
 string Location::getLong() {
     return longitude;
+}
+
+string Location::getInfo(int command) {
+    if(command == 0)
+        return price;
+    if(command == 1)
+        return rating;
+    if(command == 2)
+        return capacity;
+    if(command == 3)
+        return cleanliness;
+    if(command == 4)
+        return distanceToCenter;
+    if(command == 5)
+        return distanceToNearestMetro;
+    return "";
 }
 
 //Quick Sort Function
@@ -165,4 +182,53 @@ void QuickSort(vector<Location> &v, int start, int end, int command) {
         QuickSort(v, start, p - 1, command);
         QuickSort(v, p + 1, end, command);
     }
+}
+
+void merge(vector<Location> &v, int left, int mid, int right, int command) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    vector<Location> x;
+    vector<Location> y;
+
+    for(int i = 0; i < n1; i++) 
+        x.push_back(v[left + i]);
+    for(int j = 0; j < n2; j++)
+        y.push_back(v[mid + 1 + j]);
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while(i < n1 && j < n2) {
+        if(stof(x[i].getInfo(command)) <= stof(y[j].getInfo(command))) {
+            v[k] = x[i];
+            i += 1;
+        }
+        else {
+            v[k] = y[j];
+            j += 1;
+        }
+        k += 1;
+    }
+    while(i < n1) {
+        v[k] = x[i];
+        i += 1;
+        k += 1;
+    }
+    while(j < n2) {
+        v[k] = y[j];
+        j += 1;
+        k += 1;
+    }
+}
+
+void mergeSort(vector<Location> &v, int left, int right, int command) {
+
+    if(left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(v, left, mid, command);
+        mergeSort(v, mid + 1, right, command);
+
+        merge(v, left, mid, right, command);
+    }
+
 }
