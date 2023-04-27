@@ -73,8 +73,8 @@ int main() {
                 }
             }
             else if(sort == "merge") {
+                mergeSort(locations, 0, locations.size() - 1, command);
                 if(command == 0) {
-                    mergeSort(locations, 0, locations.size() - 1, command);
                     cout << "Sorting by price, the 5 cheapest airbnb are as follows: " << endl;
                 }
                 else if(command == 1) {

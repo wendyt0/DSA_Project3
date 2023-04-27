@@ -206,14 +206,25 @@ void merge(vector<Location> &v, int left, int mid, int right, int command) {
     int k = left;
 
     while(i < n1 && j < n2) {
-
-        if(stof(x[i].getInfo(command)) >= stof(y[j].getInfo(command))) {
-            v[k] = x[i];
-            i += 1;
-        }
-        else {
-            v[k] = y[j];
-            j += 1;
+        if(command == 1 || command == 2 || command == 3) {
+            if(stof(x[i].getInfo(command)) >= stof(y[j].getInfo(command))) {
+                v[k] = x[i];
+                i += 1;
+            }
+            else {
+                v[k] = y[j];
+                j += 1;
+            }
+    }
+        else if(command == 0 || command == 4 || command == 5) {
+                if(stof(x[i].getInfo(command)) <= stof(y[j].getInfo(command))) {
+                    v[k] = x[i];
+                    i += 1;
+                }
+                else {
+                    v[k] = y[j];
+                    j += 1;
+                }
         }
         k += 1;
     }
