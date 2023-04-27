@@ -36,7 +36,7 @@ int main() {
                     getline(s, temp, ',');
                     tempVec.push_back(temp);
                 }
-                Location temp(tempVec[1], tempVec[10], tempVec[11], tempVec[9], tempVec[12], tempVec[13], tempVec[19], tempVec[18]);
+                Location temp(tempVec[1], tempVec[10], tempVec[5], tempVec[9], tempVec[12], tempVec[13], tempVec[19], tempVec[18]);
                 locations.push_back(temp);
                 tempVec.clear();
             }
@@ -57,7 +57,7 @@ int main() {
                     cout << "Sorting by rating, the 5 highest rated airbnb are as follows: " << endl;
                 }
                 else if(command == 2) {
-                    cout << "Sorting by capacity, the 5 airbnb with greatest guest satisfaction overall are as follows: " << endl;
+                    cout << "Sorting by capacity, the 5 airbnb with greatest number of guests allowed are as follows: " << endl;
                 }
                 else if(command == 3) {
                     cout << "Sorting by cleanliness, the 5 airbnb rated most clean are as follows: " << endl;
@@ -81,7 +81,7 @@ int main() {
                     cout << "Sorting by rating, the 5 highest rated airbnb are as follows: " << endl;
                 }
                 else if(command == 2) {
-                    cout << "Sorting by capacity, the 5 airbnb with greatest guest satisfaction overall are as follows: " << endl;
+                    cout << "Sorting by capacity, the 5 airbnb with greatest number of guests allowed are as follows: " << endl;
                 }
                 else if(command == 3) {
                     cout << "Sorting by cleanliness, the 5 airbnb rated most clean are as follows: " << endl;
