@@ -15,7 +15,7 @@ class Location {
 
 public:
     Location(std::string a, std::string b, std::string c, std::string d, std::string e, std::string f, std::string g, std::string h);
-    void printAll();
+    void printInfo(int command);
     int QuickSortHelper(vector<Location> &v, int start, int end, int command);
     void QuickSort(vector<Location> &v, int start, int end, int command);
     string getPrice();
@@ -40,13 +40,20 @@ Location::Location(std::string a, std::string b, std::string c, std::string d, s
     longitude = h;
 }
 
-void Location::printAll() {
-    std::cout << "Price: " << price << std::endl;
-    std::cout << "Rating: " << rating << std::endl;
-    std::cout << "Capacity: " << capacity << std::endl;
-    std::cout << "Cleanliness: " << cleanliness << std::endl;
-    std::cout << "DTC: " << distanceToCenter << std::endl;
-    std::cout << "DTNM: " << distanceToNearestMetro << std::endl;
+void Location::printInfo(int command) {
+    if(command == 0)
+        std::cout <<  "Price: ";
+    if(command == 1)
+        std::cout << "Rating: ";
+    if(command == 2)
+        std::cout << "Capacity: ";
+    if(command == 3)
+        std::cout << "Cleanliness: ";
+    if(command == 4)
+        std::cout << "Distance to center: ";
+    if(command == 5)
+        std::cout << "Distance to nearest metro: ";
+    std::cout << getInfo(command) << std::endl;
     std::cout << "Lat: " << latitude << std::endl;
     std::cout << "Long: " << longitude << std::endl;
     cout << endl;
@@ -199,7 +206,8 @@ void merge(vector<Location> &v, int left, int mid, int right, int command) {
     int k = left;
 
     while(i < n1 && j < n2) {
-        if(stof(x[i].getInfo(command)) <= stof(y[j].getInfo(command))) {
+
+        if(stof(x[i].getInfo(command)) >= stof(y[j].getInfo(command))) {
             v[k] = x[i];
             i += 1;
         }

@@ -42,7 +42,7 @@ int main() {
             }
             file.close();
             // Test any index
-//            locations[562].printAll();
+            //locations[562].printAll();
             printMenu();
             cin >> command;
 
@@ -54,7 +54,7 @@ int main() {
                     cout << "Sorting by price, the 5 cheapest airbnb are as follows: " << endl;
                 }
                 else if(command == 1) {
-                    cout << "Sorting by rating, the 5 highest rated airbnb are as follows: " << endl;
+                    cout << "Sorting by rating, the 5 airbnb with the greatest guest satisfaction are: " << endl;
                 }
                 else if(command == 2) {
                     cout << "Sorting by capacity, the 5 airbnb with greatest number of guests allowed are as follows: " << endl;
@@ -69,7 +69,7 @@ int main() {
                     cout << "Sorting by distance to nearest metro, the 5 airbnb closet to a metro are as follows: " << endl;
                 }
                 for(int i = 0; i < 5; i++) {
-                    locations[i].printAll();
+                    locations[i].printInfo(command);
                 }
             }
             else if(sort == "merge") {
@@ -78,7 +78,7 @@ int main() {
                     cout << "Sorting by price, the 5 cheapest airbnb are as follows: " << endl;
                 }
                 else if(command == 1) {
-                    cout << "Sorting by rating, the 5 highest rated airbnb are as follows: " << endl;
+                    cout << "Sorting by rating, the 5 airbnb with the greatest guest satisfaction are: " << endl;
                 }
                 else if(command == 2) {
                     cout << "Sorting by capacity, the 5 airbnb with greatest number of guests allowed are as follows: " << endl;
@@ -93,7 +93,8 @@ int main() {
                     cout << "Sorting by distance to nearest metro, the 5 airbnb closet to a metro are as follows: " << endl;
                 }
                 for(int i = 0; i < 5; i++) {
-                    locations[i].printAll();
+                    
+                    locations[i].printInfo(command);
                 }
             }
             else {
