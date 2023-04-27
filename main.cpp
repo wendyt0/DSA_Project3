@@ -41,8 +41,6 @@ int main() {
                 tempVec.clear();
             }
             file.close();
-            // Test any index
-            //locations[562].printAll();
             printMenu();
             cin >> command;
 
@@ -68,7 +66,7 @@ int main() {
                 else if(command == 5) {
                     cout << "Sorting by distance to nearest metro, the 5 airbnb closet to a metro are as follows: " << endl;
                 }
-                for(int i = 0; i < 5; i++) {
+                for(int i = 0; i < 15; i++) {
                     locations[i].printInfo(command);
                 }
             }
@@ -92,7 +90,7 @@ int main() {
                 else if(command == 5) {
                     cout << "Sorting by distance to nearest metro, the 5 airbnb closet to a metro are as follows: " << endl;
                 }
-                for(int i = 0; i < 5; i++) {
+                for(int i = 0; i < 15; i++) {
                     
                     locations[i].printInfo(command);
                 }
